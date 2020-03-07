@@ -1,5 +1,5 @@
 # Number-Convertor
-some exercise in python
+exercise in python
 
 can convert numbers in binary,hexadecimal and decimal bases
 
