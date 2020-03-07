@@ -4,6 +4,7 @@ import Convertor as conv
 HEIGHT=500
 WIDTH=600
 
+#functions for checking input------------
 def wrongIn():
     label['text']='Wrong input,try again'
 
@@ -21,7 +22,7 @@ def checkEntryBin(entry):
             wrongIn()
             return False
     return True
-
+#------------------------------------------
 def convert_func(entry,state):
     str=''
     if state=='Dec':
@@ -50,11 +51,15 @@ def convert_func(entry,state):
     print(str)
     label['text']=str
 
+    
 root = tk.Tk()
 root.title("Convertor")
 
+#can change window size by changeing HEIGHT / WIDTH values
 canvas=tk.Canvas(root,height=HEIGHT ,width=WIDTH )
 canvas.pack()
+
+#background
 backgroung_image=tk.PhotoImage(file="image.png")
 backgroung_label=tk.Label(root,image=backgroung_image)
 backgroung_label.place(relwidth=1,relheight=1)
@@ -62,20 +67,23 @@ backgroung_label.place(relwidth=1,relheight=1)
 frame=tk.Frame(root,bg='#D6C1FF',bd=5)
 frame.place(relx=0.5,rely=0.1,relwidth=0.75,relheight=0.1,anchor='n')
 
+#drop menu
 clicked=tk.StringVar()
 clicked.set("Bin")
 drop= tk.OptionMenu(frame, clicked,"Bin","Dec","Hex")
 drop.place(relheight=1,relwidth=0.13)
 
+#input entry
 entry= tk.Entry(frame,bg='#FEF9E7',font=('Courier',14))
 entry.place(relx=0.15,relwidth=0.519,relheight=1)
 
+#button for convert
 button = tk.Button(frame,text="Convert",bg='#A6C8F7',font=40,command= lambda:convert_func(entry.get(),clicked.get()))
 button.place(relx=0.68,relheight=1,relwidth=0.32)
 
+#frame and label for output
 lowerFrame= tk.Frame(root,bg='#D6C1FF',bd=10)
 lowerFrame.place(relx=0.5,rely=0.25,relwidth=0.75,relheight=0.6,anchor='n')
-
 label=tk.Label(lowerFrame,bg='#FEF9E7',font=('Courier',16))
 label.place(relwidth=1,relheight=1)
 
